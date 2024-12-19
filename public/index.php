@@ -1,6 +1,12 @@
 <?php
 
 $httpHost = $_SERVER['HTTP_HOST'];
+$wwwPrefix = 'www.';
+
+if (str_starts_with($httpHost, $wwwPrefix)) {
+    $httpHost = substr($httpHost, strlen($wwwPrefix));
+}
+
 $explodedHttpHost = explode('.', $httpHost, 2);
 
 if (count($explodedHttpHost) !== 2) {
